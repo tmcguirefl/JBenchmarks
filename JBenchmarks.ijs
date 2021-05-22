@@ -100,7 +100,7 @@ nums =. ?y$0
 
 NB. benchmarks 
 NB. the test bench for collected routines
-benchmarks =: 3 : 0
+KVWbmarks =: 3 : 0
 smoutput 'sumloop: ',":timespacex 'sumloop 1000000'
 smoutput 'sumj: ',":timespacex 'sumj 1000000'
 smoutput 'ack: ',":timespacex '3 ack 8'
