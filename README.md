@@ -15,4 +15,4 @@ These were loosely taken from a scheme language set of benchmarks and use J lang
 
 __ADVbenchmarks.ijs__ is the J language script file that contains these benchmarks\
 __ADVbmarks__ function is the test harness\
-__usage:__ ADVbmarks ''\
+__usage:__ ADVbmarks ''
