@@ -2,6 +2,7 @@ NB. Selected Benchmarks from Scheme benchmark site
 
 load 'math/calculus'
 load 'math/fftw'
+load 'math/mt'
 
 NB. Takeuchi function triple recursive
 tak =: 3 : 0
@@ -58,6 +59,50 @@ NB. data to be used for ft benchmark
 NB. this is compared to the fftw and output with label fftws (s suffix indicates small dataset)
 data=: 1p_0.1 * 2 o. 0.2p1 * i.10
 
+NB. QR decomposition
+mp=: +/ . *  NB. matrix product
+h =: +@|:    NB. conjugate transpose
+
+NB. The first routine is from J software Essays page
+NB. it returns 2 matrices in boxed form
+NB. usage: 'Q R' =: QR QRdata
+QR=: 3 : 0
+ n=.{:$A=.y
+ if. 1>:n do.
+  A ((% {.@,) ; ]) %:(h A) mp A
+ else.
+  m =.>.n%2
+  A0=.m{."1 A
+  A1=.m}."1 A
+  'Q0 R0'=.QR A0
+  'Q1 R1'=.QR A1 - Q0 mp T=.(h Q0) mp A1
+  (Q0,.Q1);(R0,.T),(-n){."1 R1
+ end.
+)
+
+NB. code from the essay to create a matrix to use
+QRdata =: j./ _8 + 2 7 4 ?.@$ 20   NB. a random matrix
+
+NB. QR decomposition
+NB. Schwarz-Rutishauser QR method
+NB. from the online blog site: Towards Data Science
+NB. https://towardsdatascience.com/can-qr-decomposition-be-actually-faster-schwarz-rutishauser-algorithm-a32c0cde8b9b
+NB. original python translated into J language equivalent
+srQR =: 3 : 0
+Q =. y
+n =. _1 {. $Q
+R =. (n,n)$0
+
+for_k. i.n do.
+ for_i. i.k do.
+  R =. ((i{"1 Q) +/ . * k{"1 Q) (<i,k)} R
+  Q =. ((k{"1 Q) - ((<i,k){R) * i{"1 Q)(k)}"0 1 Q
+ end.
+ R =. (norms_mt_ k{"1 Q)(<k,k)}R
+ Q =. ((k{"1 Q) % (<k,k){R) (k)}"0 1 Q
+end.
+Q;R
+)
 
 NB. ADVbmarks 
 NB. the test bench for collected routines from selected scheme benchmarks 
@@ -72,4 +117,7 @@ smoutput 'fftw: ',":timespacex 'fftB=: fftw fftA'
 smoutput 'ifftw: ',":timespacex 'ifftw fftB'
 smoutput 'ft: ',":timespacex '<.&.(1e12&*)@(1e_14&+) ft data'
 smoutput 'fftws: ',": timespacex '<.&.(1e12&*)@(1e_14&+) fftw data'
+smoutput 'QRrec: ',": timespacex '''Q R''=: QR QRdata'
+smoutput 'srQR: ',": timespacex '''Q R''=: srQR QRdata'
+smoutput 'QRfor: ',": timespacex '''Q R''=: (128!:0) QRdata'
 )
