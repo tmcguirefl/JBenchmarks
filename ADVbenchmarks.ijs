@@ -81,7 +81,7 @@ QR=: 3 : 0
 )
 
 NB. code from the essay to create a matrix to use
-QRdata =: j./ _8 + 2 7 4 ?.@$ 20   NB. a random matrix
+QRdata =: j./ _8 + 2 700 400 ?.@$ 20   NB. a random matrix
 
 NB. QR decomposition
 NB. Schwarz-Rutishauser QR method
@@ -107,6 +107,11 @@ Q;R
 NB. ADVbmarks 
 NB. the test bench for collected routines from selected scheme benchmarks 
 NB. implemented in the J language
+NB. NOTE: srQR test commented out because it take over 1.5 minutes 
+NB. to complete. It only shows to avoid script loops when possible
+NB. 
+NB. the Match test checks if the Q R matrices (when multiplied together)
+NB. match the original matrix
 ADVbmarks =: 3 : 0
 smoutput 'tak: ',":timespacex 'tak 18 12 6'
 smoutput 'fibN: ',":timespacex 'fibN 40'
@@ -117,7 +122,10 @@ smoutput 'fftw: ',":timespacex 'fftB=: fftw fftA'
 smoutput 'ifftw: ',":timespacex 'ifftw fftB'
 smoutput 'ft: ',":timespacex '<.&.(1e12&*)@(1e_14&+) ft data'
 smoutput 'fftws: ',": timespacex '<.&.(1e12&*)@(1e_14&+) fftw data'
+smoutput 'QRdata size: ',":$QRdata
 smoutput 'QRrec: ',": timespacex '''Q R''=: QR QRdata'
-smoutput 'srQR: ',": timespacex '''Q R''=: srQR QRdata'
+NB. smoutput 'srQR: ',": timespacex '''Q R''=: srQR QRdata'
 smoutput 'QRfor: ',": timespacex '''Q R''=: (128!:0) QRdata'
+smoutput 'MMult: ',": timespacex 'QRdata1=: clean Q mp R'
+smoutput 'Match: ',(": QRdata -: QRdata1),' (not a timing, checks orig matrix matches the mult. QxR)'
 )
