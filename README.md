@@ -16,3 +16,8 @@ These were loosely taken from a scheme language set of benchmarks and use J lang
 __ADVbenchmarks.ijs__ is the J language script file that contains these benchmarks\
 __ADVbmarks__ function is the test harness\
 __usage:__ ADVbmarks ''
+
+## Kernighan/Van Wyk benchmarks in APL
+Similar benchmarks done in APL to allow for some cross language performance comparison. There are enough differences in the implementations 
+and a lack of APL idiom knowledge by the author such that a true performance comparison can not be made. However it is a nice start 
+to see how some simple things are accomplised in both languages and in a general sense both perform quite fast enough for personal use.
