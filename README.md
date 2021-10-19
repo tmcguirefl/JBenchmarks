@@ -10,6 +10,9 @@ __KWVbmarks.ijs__ is the J language script file that implements the benchmark\
 __KWVbmarks__ function is the test harness for the collected rouines\
 __usage:__ KWVbmarks ''
 
+__NOTE:__ KWVBmarks expects the KVJ bible file to be in the ~temp directory (j903/temp). This directory is in the j903 user directory in your home directory. 
+The sum1 routine (within KWVBmarks) expects a file of floats to be placed in the same directory. There is a generation routine called makeRFloat that will generate a file in the appropriate directory and name the file randfloats.dsv. Just call makeRFloat with an empty string: makeRFloat''
+
 ## Advanced Benchmarks
 These were loosely taken from a scheme language set of benchmarks and use J language implemetation that is similar but not a direct transcription of the scheme routines.
 
