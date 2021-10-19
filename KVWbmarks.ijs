@@ -14,6 +14,11 @@ end.
 sum
 )
 
+NB. sumloop1 
+NB. Proposed by Devon McCormack as a J version with looping by 
+NB. the power operator, more analogous to an actual for loop
+sumloopj1 =: <:@:>:^:#
+
 NB. sumj
 NB. sum consecutive integers as in J
 sumj =: 13 : '+/ y$1'
@@ -102,6 +107,7 @@ NB. benchmarks
 NB. the test bench for collected routines
 KVWbmarks =: 3 : 0
 smoutput 'sumloop: ',":timespacex 'sumloop 1000000'
+smoutput 'sumloop1: ',":timespacex 'sumloop1 1000000'
 smoutput 'sumj: ',":timespacex 'sumj 1000000'
 smoutput 'ack: ',":timespacex '3 ack 8'
 NB. assignment used in array call as that is part of the test
