@@ -21,3 +21,14 @@ __usage:__ ADVbmarks ''
 Similar benchmarks done in APL to allow for some cross language performance comparison. There are enough differences in the implementations 
 and a lack of APL idiom knowledge by the author such that a true performance comparison can not be made. However it is a nice start 
 to see how some simple things are accomplised in both languages and in a general sense both perform quite fast enough for personal use.
+
+## Further J Benchmarks
+Devon McCormick has a set of Benchmarks he wrote for J contained in a J script at the J Software website. You can find them here:\
+https://code.jsoftware.com/mediawiki/images/e/e2/Bmks.ijs
+
+## Benchmarks discussed:
+Discussion of J Benchmarks during the NYC J Users Group:\
+https://code.jsoftware.com/wiki/NYCJUG/2021-06-08
+
+Benchmark discussion thread about the implementation done in this Github repository:\
+http://www.jsoftware.com/pipermail/programming/2021-May/058182.html
