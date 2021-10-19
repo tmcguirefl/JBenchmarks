@@ -104,6 +104,20 @@ end.
 Q;R
 )
 
+NB. gradeup (/:) test
+NB. Proposed by Henry Rich
+NB. Create 1e4 random numbers and then create a sorting index
+NB. No function defined here in the ADVbmarks timing on /: will be done on r`
+r =: 1e4 ?@$ 2e4
+NB. a second set of numbers to test 
+r1 =: 1e4 ?@$ 1e9
+
+NB. running sum
+NB. Proposed by Henry Rich 
+NB. take r1 data and obtain running sums
+NB. No function need be defined use j statement r1 =: +/\ r1
+NB. the assignment causes J to perform the operation in place minimizing memory creation
+
 NB. ADVbmarks 
 NB. the test bench for collected routines from selected scheme benchmarks 
 NB. implemented in the J language
@@ -113,14 +127,14 @@ NB.
 NB. the Match test checks if the Q R matrices (when multiplied together)
 NB. match the original matrix
 ADVbmarks =: 3 : 0
-smoutput 'tak: ',":timespacex 'tak 18 12 6'
-smoutput 'fibN: ',":timespacex 'fibN 40'
-smoutput 'rsum: ',":timespacex '10000 rsum 0'
-smoutput 'mbrot: ',":timespacex 'mcf "0 @ domain (_2j_1 1j1) ; 0.04'
-smoutput 'deriv: ',":timespacex '5 5 30&p. deriv_jcalculus_ 1'
-smoutput 'fftw: ',":timespacex 'fftB=: fftw fftA'
-smoutput 'ifftw: ',":timespacex 'ifftw fftB'
-smoutput 'ft: ',":timespacex '<.&.(1e12&*)@(1e_14&+) ft data'
+smoutput 'tak: ',": timespacex 'tak 18 12 6'
+smoutput 'fibN: ',": timespacex 'fibN 40'
+smoutput 'rsum: ',": timespacex '10000 rsum 0'
+smoutput 'mbrot: ',": timespacex 'mcf "0 @ domain (_2j_1 1j1) ; 0.04'
+smoutput 'deriv: ',": timespacex '5 5 30&p. deriv_jcalculus_ 1'
+smoutput 'fftw: ',": timespacex 'fftB=: fftw fftA'
+smoutput 'ifftw: ',": timespacex 'ifftw fftB'
+smoutput 'ft: ',": timespacex '<.&.(1e12&*)@(1e_14&+) ft data'
 smoutput 'fftws: ',": timespacex '<.&.(1e12&*)@(1e_14&+) fftw data'
 smoutput 'QRdata size: ',":$QRdata
 smoutput 'QRrec: ',": timespacex '''Q R''=: QR QRdata'
@@ -128,4 +142,7 @@ NB. smoutput 'srQR: ',": timespacex '''Q R''=: srQR QRdata'
 smoutput 'QRfor: ',": timespacex '''Q R''=: (128!:0) QRdata'
 smoutput 'MMult: ',": timespacex 'QRdata1=: clean Q mp R'
 smoutput 'Match: ',(": QRdata -: QRdata1),' (not a timing, checks orig matrix matches the mult. QxR)'
+smoutput 'grade up1: ',": timespacex '/: r'
+smoutput 'grade up2: ',": timespacex '/: r1'
+smoutput 'running sum: ',": timespacex 'r1 =: +/\ r1'
 )
