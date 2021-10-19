@@ -118,6 +118,11 @@ NB. take r1 data and obtain running sums
 NB. No function need be defined use j statement r1 =: +/\ r1
 NB. the assignment causes J to perform the operation in place minimizing memory creation
 
+NB. 50 x 50 integer Matrix inversion
+NB. Proposed by Devon McCormick at NYCJUG
+NB. No function defined. Creation of matrix and its inversion are both timed.
+NB. J code tested: %.?50 50$1000
+
 NB. ADVbmarks 
 NB. the test bench for collected routines from selected scheme benchmarks 
 NB. implemented in the J language
