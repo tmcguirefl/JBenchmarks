@@ -15,7 +15,7 @@ sum
 )
 
 NB. sumloop1 
-NB. Proposed by Devon McCormack as a J version with looping by 
+NB. Proposed by Devon McCormick as a J version with looping by 
 NB. the power operator, more analogous to an actual for loop
 sumloopj1 =: <:@:>:^:#
 
