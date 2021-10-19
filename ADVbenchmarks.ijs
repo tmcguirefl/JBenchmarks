@@ -145,4 +145,5 @@ smoutput 'Match: ',(": QRdata -: QRdata1),' (not a timing, checks orig matrix ma
 smoutput 'grade up1: ',": timespacex '/: r'
 smoutput 'grade up2: ',": timespacex '/: r1'
 smoutput 'running sum: ',": timespacex 'r1 =: +/\ r1'
+smoutput '50x50 integer matrix create/invert: ',": timespacex '%.?50 50$1000' 
 )
