@@ -9,7 +9,7 @@ There are some files that are array language specific
 VERSION=: '1.0.1'
 
 FILES=: 0 : 0
-ADVBenchmarks.ijs
+ADVbenchmarks.ijs
 KVWbmarks.ijs
 )
 
